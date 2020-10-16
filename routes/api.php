@@ -38,7 +38,7 @@ Route::prefix('v1.0')->group(function () {
             // Refresh the JWT Token
             Route::get('refresh', [JwtAuthController::class, 'refresh']);
             // Get user info
-            Route::get('user', [JwtAuthController::class, 'user']);
+            Route::get('user-profile', [JwtAuthController::class, 'userProfile']);
             // Logout user from application
             Route::post('logout', [JwtAuthController::class, 'logout']);
         //});
