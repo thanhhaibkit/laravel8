@@ -1,16 +1,17 @@
 # Role & Pemission
 ---
-Refer https://www.codechief.org/article/user-roles-and-permissions-tutorial-in-laravel-without-packages
 
-## Migration
-- Create Permission & Role
+Refer: [User Roles and Permissions tutorial](https://www.codechief.org/article/user-roles-and-permissions-tutorial-in-laravel-without-packages)
+
+## Step 1: Migration
+#### 1.1 Create Permission & Role DB and Model
 
 ```sh
 php artisan make:model Permision --migration --seed --factory
 php artisan make:model Role --migration --seed --factory
 ```
 
-- Update migration
+- Edit migration files
 ```php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -79,7 +80,11 @@ class CreateRolesTable extends Migration
 }
 ```
 
-- Adding pivot tables
+#### 1.2 Adding pivot tables
+- User can be has specific Permissions: users_permissions
+- User has Roles: users_roles
+- Under a particular Role, User may have specific Permission: roles_permissions
+
 ```sh
 php artisan make:migration create_users_permissions_table --create=users_permissions
 php artisan make:migration create_users_roles_table --create=users_roles
@@ -123,7 +128,9 @@ class CreateUsersPermissionsTable extends Migration
         Schema::dropIfExists('users_permissions');
     }
 }
+```
 
+```php
 class CreateUsersRolesTable extends Migration
 {
     /**
@@ -156,7 +163,9 @@ class CreateUsersRolesTable extends Migration
         Schema::dropIfExists('users_roles');
     }
 }
+```
 
+```php
 class CreateRolesPermissionsTable extends Migration
 {
     /**
@@ -191,7 +200,7 @@ class CreateRolesPermissionsTable extends Migration
 }
 ```
 
-- Setting up the relationships
+#### Step 1.3 Setting up the relationships
 ##### App/Role.php
 ```php
 public function permissions() {
@@ -202,7 +211,7 @@ public function users() {
    return $this->belongsToMany(User::class,'users_roles');
 }
 ```
-##### App/Role.php
+##### App/Permission.php
 ```php
 public function roles() {
    return $this->belongsToMany(Role::class,'roles_permissions');
@@ -213,9 +222,101 @@ public function users() {
 }
 ```
 
-- Creating a Trait
+## Step 2: Creating a Trait
+##### App/Permissions/HasPermissionsTrait.php
 ```php
-// file: app/Traits/HasPermissionTrait.php
+namespace App\Permissions;
+
+use App\Permission;
+use App\Role;
+
+trait HasPermissionsTrait {
+
+   public function givePermissionsTo(... $permissions) {
+
+    $permissions = $this->getAllPermissions($permissions);
+    dd($permissions);
+    if($permissions === null) {
+      return $this;
+    }
+    $this->permissions()->saveMany($permissions);
+    return $this;
+  }
+
+  public function withdrawPermissionsTo( ... $permissions ) {
+
+    $permissions = $this->getAllPermissions($permissions);
+    $this->permissions()->detach($permissions);
+    return $this;
+
+  }
+
+  public function refreshPermissions( ... $permissions ) {
+
+    $this->permissions()->detach();
+    return $this->givePermissionsTo($permissions);
+  }
+
+  public function hasPermissionTo($permission) {
+
+    return $this->hasPermissionThroughRole($permission) || $this->hasPermission($permission);
+  }
+
+  public function hasPermissionThroughRole($permission) {
+
+    foreach ($permission->roles as $role){
+      if($this->roles->contains($role)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public function hasRole( ... $roles ) {
+
+    foreach ($roles as $role) {
+      if ($this->roles->contains('slug', $role)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public function roles() {
+
+    return $this->belongsToMany(Role::class,'users_roles');
+
+  }
+  public function permissions() {
+
+    return $this->belongsToMany(Permission::class,'users_permissions');
+
+  }
+  protected function hasPermission($permission) {
+
+    return (bool) $this->permissions->where('slug', $permission->slug)->count();
+  }
+
+  protected function getAllPermissions(array $permissions) {
+
+    return Permission::whereIn('slug',$permissions)->get();
+    
+  }
+
+}
+```
+
+Add to 
+###### app/User.php
+```php
+namespace App;
+
+use App\Permissions\HasPermissionsTrait;
+
+class User extends Authenticatable
+{
+    use HasPermissionsTrait; //Import The Trait
+}
 ```
 
 - Create custom Provider
