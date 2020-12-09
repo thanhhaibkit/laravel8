@@ -7,7 +7,7 @@ Refer: [User Roles and Permissions tutorial](https://www.codechief.org/article/u
 #### 1.1 Create Permission & Role DB and Model
 
 ```sh
-php artisan make:model Permision --migration --seed --factory
+php artisan make:model Permission --migration --seed --factory
 php artisan make:model Role --migration --seed --factory
 ```
 
@@ -17,7 +17,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePermisionsTable extends Migration
+class CreatePermissionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -26,7 +26,7 @@ class CreatePermisionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('permisions', function (Blueprint $table) {
+        Schema::create('permissions', function (Blueprint $table) {
             $table->id();
             $table->string('name'); // e.g. edit posts
             $table->string('slug'); // e.g. edit-posts
@@ -41,7 +41,7 @@ class CreatePermisionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permisions');
+        Schema::dropIfExists('permissions');
     }
 }
 ```
