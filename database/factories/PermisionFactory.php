@@ -5,7 +5,7 @@ namespace Database\Factories;
 use App\Models\Permission;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PermissionFactory extends Factory
+class PermisionFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
