@@ -15,7 +15,19 @@ class HenryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        $modules = array_map('basename', File::directories(__DIR__));
+
+        foreach ($modules as $module) {
+            $moduleDir = __DIR__ . '/' . $module;
+
+            // service provider
+            if (file_exists($moduleDir . '/ServiceProvider.php')) {
+                $this->app->register('Henry\\' . ucfirst($module) . '\\' . 'ServiceProvider');
+            } else {
+                Log::error('ServiceProvider.php not found in module ' . $module);
+                continue;
+            }
+        }
     }
 
     /**
@@ -47,13 +59,8 @@ class HenryServiceProvider extends ServiceProvider
                 }
             }
 
-            // service provider
-            if (file_exists($moduleDir . '/ServiceProvider.php')) {
-                $this->app->register('Henry\\' . ucfirst($module) . '\\' . 'ServiceProvider');
-            } else {
-                Log::error('ServiceProvider.php not found in module ' . $module);
-                continue;
-            }
+            // views
+
         }
     }
 }
