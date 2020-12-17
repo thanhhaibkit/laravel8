@@ -13,7 +13,7 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function register()
     {
-        $this->app->register('Henry\\Chatter\\Src\\Providers\\ChatterServiceProvider');
+        $this->app->register('Henry\\Chatter\\Providers\\ChatterServiceProvider');
     }
 
     /**
@@ -23,6 +23,6 @@ class ServiceProvider extends BaseServiceProvider
      */
     public function boot()
     {
-
+        //
     }
 }

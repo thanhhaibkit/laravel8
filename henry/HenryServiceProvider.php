@@ -21,7 +21,7 @@ class HenryServiceProvider extends ServiceProvider
             $moduleDir = __DIR__ . '/' . $module;
 
             // service provider
-            if (file_exists($moduleDir . '/ServiceProvider.php')) {
+            if (file_exists($moduleDir . '/src/ServiceProvider.php')) {
                 $this->app->register('Henry\\' . ucfirst($module) . '\\' . 'ServiceProvider');
             } else {
                 Log::error('ServiceProvider.php not found in module ' . $module);
@@ -51,8 +51,13 @@ class HenryServiceProvider extends ServiceProvider
                 }
             }
 
-            // route
-            if (is_dir($configDir = $moduleDir . '/routes')) {
+            // migrations
+            if (is_dir($migrationsDir = $moduleDir . '/database/migrations')) {
+                $this->loadMigrationsFrom($migrationsDir);
+            }
+
+            // routes
+            if (is_dir($routesDir = $moduleDir . '/routes')) {
                 $files = File::files($configDir);
                 foreach ($files as $file) {
                     $this->loadRoutesFrom($file);

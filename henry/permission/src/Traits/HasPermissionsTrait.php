@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Traits;
+namespace Henry\Permission\Traits;
 
-use App\Models\Permission;
-use App\Models\Role;
+use Henry\Permission\Models\Permission;
+use Henry\Permission\Models\Role;
 
 trait HasPermissionsTrait
 {

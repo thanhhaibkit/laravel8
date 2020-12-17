@@ -39,7 +39,9 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Henry\\": "henry/"
+            "Henry\\": "henry/",
+            "Henry\\Chatter\\": "henry/chatter/src",
+            "Henry\\Permission\\": "henry/permission/src"
         }
     },
     "autoload-dev": {

@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Providers;
+namespace Henry\Permission\Providers;
 
-use App\Models\Permission;
+use Henry\Permission\Models\Permission;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
-class PermissionsServiceProvider extends ServiceProvider
+class PermissionServiceProvider extends ServiceProvider
 {
     /**
-     * Register services.
+     * Register any application services.
      *
      * @return void
      */
@@ -20,7 +20,7 @@ class PermissionsServiceProvider extends ServiceProvider
     }
 
     /**
-     * Bootstrap services.
+     * Bootstrap any application services.
      *
      * @return void
      */
