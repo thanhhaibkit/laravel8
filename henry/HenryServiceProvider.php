@@ -58,7 +58,7 @@ class HenryServiceProvider extends ServiceProvider
 
             // routes
             if (is_dir($routesDir = $moduleDir . '/routes')) {
-                $files = File::files($configDir);
+                $files = File::files($routesDir);
                 foreach ($files as $file) {
                     $this->loadRoutesFrom($file);
                 }

@@ -30,5 +30,12 @@
         "psr-4": {
             "Henry\\Chatter\\": "src/"
         }
-    }
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Henry\\Chatter\\Providers\\ChatterServiceProvider"
+          ]
+        }
+      }
 }
