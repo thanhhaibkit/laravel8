@@ -10,13 +10,13 @@ export default new Router({
     },
     routes: [
         {
-            path: '/',
-            name: 'home',
-            component: Home
+            path: '/dashboard',
+            name: 'dashboard',
+            component: () => import("./components/Dashboard.vue")
         },
         {
-            path: "login",
-            component: () => import("@/components/login/User.vue")
+            path: "/login",
+            component: () => import("./components/authentication/login/User.vue")
         }
     ]
 })

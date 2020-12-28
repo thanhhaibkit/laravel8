@@ -181,16 +181,72 @@ export default new Router({
         {
             path: '/dashboard',
             name: 'dashboard',
-            component: () => import("@/components/Dashboard.vue")
+            component: () => import("./components/Dashboard.vue")
         },
         {
             path: "login",
-            component: () => import("@/components/login/User.vue")
+            component: () => import("./components/authentication/login/User.vue")
         }
     ]
 })
+```
+
+Update app.js to import vue router
+```js
+/* File: resources/js/router.js */
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+
+const app = new Vue({
+    router,
+    render: app => app(App)
+}).$mount("#app");
+```
+
+And now, update Laravel web route to config every request using welcome view, so after Vue route will handle next
+```php
+// file: routes/web.php
+Route::get('/{any?}', function () {
+    return view('welcome');
+});
+```
+
+Okay, testing time.
+```sh
+php artisan serve --port=9090
+npm run watch
+```
+
+Access to http://localhost:9090/login, it should show vue login page
+
+
+Re-cap
+```
++--------------------------------------+
+| Access: http://localhost:9090/login  |
++---|----------------------------------+
+    | Laravel route load view
++---V----------------------------------+
+| Load Welcome view                    |
++---|----------------------------------+
+    | blade view will load scripts
++---V----------------------------------+
+| Load app.js                          |
++---|----------------------------------+
+    | app.js load Vue Route and route.js
++---V----------------------------------+
+| Load Login.vue                       |
++---|----------------------------------+
+    |
++---V----------------------------------+
+| Retunr Login page                    |
++--------------------------------------+
 
 ```
+
+Next, we will using websanova to process authentication
+
 
 https://codebriefly.com/laravel-jwt-authentication-vue-js-spa-part-2/#Setup_Vue_Js
 https://topdev.vn/blog/api-authentication-trong-laravel-vue-spa-su-dung-jwt-auth/#ftoc-heading-1
