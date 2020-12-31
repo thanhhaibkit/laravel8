@@ -1,15 +1,18 @@
 require('./bootstrap');
 //require('alpinejs');
 
+import 'es6-promise/auto'
 import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 //import store from "./store/index";
-import axios from 'axios'
-import VueAxios from 'vue-axios'
 
-//Vue.use(VueAxios, axios)
-//axios.defaults.baseURL = `${process.env.MIX_APP_URL}/api/v1.0`
+// Load plugins
+import "./plugins";
+
+
+//Vue.router = router
+//App.router = Vue.router
 
 const app = new Vue({
     router,

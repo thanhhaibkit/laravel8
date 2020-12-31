@@ -1,22 +1,28 @@
 import Vue from "vue";
-import Router from "vue-router";
+import VueRouter from "vue-router";
 
-Vue.use(Router);
+Vue.use(VueRouter);
 
-export default new Router({
-    mode: "history",
-    scrollBehavior(to, from, savedPosition) {
-        return { x: 0, y: 0 };
+// Routes
+const routes = [
+    {
+        path: '/dashboard',
+        name: 'dashboard',
+        component: () => import("./components/Dashboard.vue")
     },
-    routes: [
-        {
-            path: '/dashboard',
-            name: 'dashboard',
-            component: () => import("./components/Dashboard.vue")
-        },
-        {
-            path: "/login",
-            component: () => import("./components/authentication/login/User.vue")
+    {
+        path: "/login",
+        component: () => import("./components/authentication/login/User.vue"),
+        meta: {
+            auth: false
         }
-    ]
-})
+    }
+];
+
+const router = new VueRouter({
+    history: true,
+    mode: 'history',
+    routes,
+});
+
+export default router;

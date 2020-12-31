@@ -112,9 +112,9 @@ Imaging the flow
 ### Setup Vue JS Packages for Authentication
 
 ```sh
-npm install axios es6-promise
-npm install vue-axios vue-router vue-loader vue-template-compiler
-npm install @websanova/vue-auth
+
+npm install vue-router vue-loader vue-template-compiler
+
 ```
 
 Create Vue components: Dashboard and Login (User Login)
@@ -226,11 +226,11 @@ Re-cap
 +--------------------------------------+
 | Access: http://localhost:9090/login  |
 +---|----------------------------------+
-    | Laravel route load view
+    | Laravel route loads view
 +---V----------------------------------+
 | Load Welcome view                    |
 +---|----------------------------------+
-    | blade view will load scripts
+    | blade view loads scripts
 +---V----------------------------------+
 | Load app.js                          |
 +---|----------------------------------+
@@ -240,12 +240,28 @@ Re-cap
 +---|----------------------------------+
     |
 +---V----------------------------------+
-| Retunr Login page                    |
+| Return Login page                    |
 +--------------------------------------+
 
 ```
 
 Next, we will using websanova to process authentication
+Update .env file to define api
+```env
+APP_URL=http://localhost
+MIX_APP_URL="${APP_URL}"
+```
+
+Install node package
+```sh
+npm install axios es6-promise
+npm install vue-axios
+npm install @websanova/vue-auth
+```
+
+(***) Install JWT -> refer to another guide
+
+
 
 
 https://codebriefly.com/laravel-jwt-authentication-vue-js-spa-part-2/#Setup_Vue_Js

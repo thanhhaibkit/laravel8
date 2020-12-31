@@ -11,12 +11,34 @@
             </div>
             <form autocomplete="off" @submit.prevent="login" method="post">
               <div class="form-group">
+                <label for="account">Account</label>
+                <input
+                  type="text"
+                  id="account"
+                  class="form-control"
+                  v-model="account"
+                  required
+                />
+              </div>
+              <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" class="form-control" v-model="username" required>
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control"
+                  v-model="username"
+                  required
+                />
               </div>
               <div class="form-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" class="form-control" v-model="password" required>
+                <input
+                  type="password"
+                  id="password"
+                  class="form-control"
+                  v-model="password"
+                  required
+                />
               </div>
               <button type="submit" class="btn btn-primary">Signin</button>
             </form>
@@ -31,23 +53,38 @@
 export default {
   data() {
     return {
-      email: null,
+      account: null,
+      username: null,
       password: null,
-      error: false,
+      success: false,
+      has_error: false,
+      error: "",
     };
+  },
+  mounted() {
+    //
   },
   methods: {
     login() {
       var app = this;
       this.$auth.login({
-        params: {
-          email: app.email,
+        data: {
+          account_code: app.account,
+          username: app.username,
           password: app.password,
         },
-        success: function () {},
-        error: function () {},
+        success: function () {
+          // handle redirection
+          app.success = true;
+          const redirectTo = "dashboard";
+          this.$router.push({ name: redirectTo });
+        },
+        error: function () {
+          app.has_error = true;
+          app.error = res.response.data.error;
+        },
         rememberMe: true,
-        redirect: "/dashboard",
+        redirect: '/dashboard',
         fetchUser: true,
       });
     },
