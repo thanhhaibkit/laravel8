@@ -84,8 +84,9 @@ export default {
           app.error = res.response.data.error;
         },
         rememberMe: true,
-        redirect: '/dashboard',
-        fetchUser: true,
+        redirect: {name: 'dashboard'},
+        staySignedIn: true,
+        fetchUser: false,
       });
     },
   },
