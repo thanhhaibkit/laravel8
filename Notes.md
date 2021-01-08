@@ -17,9 +17,6 @@ php artisan make:factory AccountFactory --model=Account
 
 ```
 
-php artisan make:migration create_blocks_table --create=blocks
-
-
 ---
 
 # Authenticate by JWT

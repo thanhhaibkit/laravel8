@@ -14,7 +14,8 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "tymon/jwt-auth": "^1.0"
+        "tymon/jwt-auth": "^1.0",
+        "henry/chatter": "*@dev"
     },
     "require-dev": {
         "facade/ignition": "^2.3.6",
@@ -39,9 +40,7 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/",
-            "Henry\\": "henry/",
-            "Henry\\Chatter\\": "henry/chatter/src",
-            "Henry\\Permission\\": "henry/permission/src"
+            "Henry\\": "henry/"
         }
     },
     "autoload-dev": {
@@ -62,5 +61,11 @@
         "post-create-project-cmd": [
             "@php artisan key:generate --ansi"
         ]
-    }
+    },
+    "repositories": [
+        {
+           "type": "path",
+           "url": "./henry/chatter"
+        }
+      ]
 }
