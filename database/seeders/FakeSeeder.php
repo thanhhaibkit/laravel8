@@ -18,5 +18,7 @@ class FakeSeeder extends Seeder
             $account->users()->saveMany(\App\Models\User::factory(3)->make());
         });
 
+        \App\Models\Lead::factory(10)->create();
+        \App\Models\Contact::factory(10)->create();
     }
 }
