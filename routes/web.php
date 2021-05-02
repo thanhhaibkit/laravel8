@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AccountController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,15 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*
+
+
 Route::get('/', function () {
     return view('welcome');
 });
-*/
 
+Route::get('/admin/accounts', [AccountController::class, 'index']);
+
+/*
 Route::get('/{any?}', function () {
     return view('welcome');
 });
+*/
 
 /*
 Route::get('/dashboard', function () {

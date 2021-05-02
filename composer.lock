@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "02d1399da627f18714c11344ecfd651f",
+    "content-hash": "cd9f70cdfa210542d4bbfe9fd1e8f3bd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -855,52 +855,6 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
             "time": "2021-04-26T09:17:50+00:00"
-        },
-        {
-            "name": "henry/chatter",
-            "version": "dev-develop",
-            "dist": {
-                "type": "path",
-                "url": "./henry/chatter",
-                "reference": "d5042ae919bb0926fa8820e851317ff8845fc249"
-            },
-            "require": {
-                "laravel/framework": "^8.0",
-                "php": "^7.3"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^9.3"
-            },
-            "type": "package",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "Henry\\Chatter\\Providers\\ChatterServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Henry\\Chatter\\": "src/"
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Henry Truong",
-                    "email": "thanhhaibkit@gmail.com"
-                }
-            ],
-            "description": "Mini chat application",
-            "keywords": [
-                "chatter",
-                "package"
-            ],
-            "transport-options": {
-                "relative": true
-            }
         },
         {
             "name": "laravel/framework",
@@ -7650,9 +7604,7 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": {
-        "henry/chatter": 20
-    },
+    "stability-flags": [],
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
