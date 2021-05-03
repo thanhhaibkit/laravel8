@@ -13,7 +13,7 @@ class FakeSeeder extends Seeder
      */
     public function run()
     {
-        // Fake
+        // Fake 2 records of account, each account has 3 users
         \App\Models\Account::factory(2)->create()->each(function ($account) {
             $account->users()->saveMany(\App\Models\User::factory(3)->make());
         });

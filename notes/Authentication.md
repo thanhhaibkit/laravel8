@@ -1,24 +1,3 @@
-# Create a Laravel project
-## Create fresh new
-> \> laravel new project_name
-## From an existed folder
-> existed_folder> laravel new
-
-# DB Migration
-
-```
-php artisan migrate:fresh --seed
-
-php artisan make:model Account --migration --seed --factory
-php artisan make:migration create_accounts_table --create=accounts
-php artisan make:seeder AccountSeeder
-php artisan make:factory AccountFactory --model=Account
-
-
-```
-
----
-
 # Authenticate by JWT
 
 [jwt-auth > Laravel Installation](https://jwt-auth.readthedocs.io/en/docs/laravel-installation)
@@ -32,7 +11,7 @@ $ composer require tymon/jwt-auth
 #### Add service provider
 Add the service provider to the providers array in the config/app.php config file as follows:
 ```
-'providers' => [  
+'providers' => [
     ...
     Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 ]
