@@ -22,3 +22,4 @@ Practice guide:
 - [Authentication by JWT](.\notes\Authentication.md)
 - [Use Vue as front-end](.\notes\Vue.md)
 - [Apply Repository pattern](.\notes\Repository.md)
+- [Create Console Command (Batch Job)](.\notes\Command.md)
