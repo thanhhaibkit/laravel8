@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-sm-6 offset-sm-3 mb-5">
                 <div class="mt-lg-5 text-center">
-                    <h2>@lang('account.text.page_heading')</h2>
+                    <h2>@lang('account.text.account_list')</h2>
                 </div>
             </div>
         </div>

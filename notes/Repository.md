@@ -360,3 +360,5 @@ class AccountController extends Controller {
 
 And now, do testing at below url
 > {domain}/admin/accounts
+
+> http://127.0.0.1:8000/admin/accounts
