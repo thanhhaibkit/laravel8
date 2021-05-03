@@ -12,8 +12,9 @@ return [
         'home' => 'Home',
     ],
     'text' => [
-        'account_name'      => 'Name',
+        'account_list'      => "Account List",
+        'account_name'      => 'Account Name',
         'action'            => 'Action',
-        'page_heading'      => 'Account',
+        'users_name'        => 'Users'
     ],
 ];
