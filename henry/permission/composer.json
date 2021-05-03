@@ -1,0 +1,35 @@
+{
+    "name": "henry/permission",
+    "type": "package",
+    "description": "Role Permission",
+    "keywords": [
+        "package",
+        "role",
+        "permission"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henry Truong",
+            "email": "thanhhaibkit@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3",
+        "laravel/framework": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Henry\\Permission\\": "src/"
+        }
+    }
+}

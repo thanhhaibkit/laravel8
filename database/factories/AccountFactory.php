@@ -24,7 +24,8 @@ class AccountFactory extends Factory
     {
         return [
             'code' => 'acct_' . Str::random(10),
-            'name' => $this->faker->company
+            'name' => $this->faker->company,
+            'hashed_code' => Str::random(64)
         ];
     }
 }

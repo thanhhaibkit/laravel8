@@ -16,8 +16,12 @@ class DatabaseSeeder extends Seeder
         // Origin data
         $this->call(AccountSeeder::class);
         $this->call(UserSeeder::class);
+        $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
 
         // Fake data
         $this->call(FakeSeeder::class);
+
+
     }
 }

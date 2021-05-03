@@ -1,0 +1,41 @@
+{
+    "name": "henry/chatter",
+    "type": "package",
+    "description": "Mini chat application",
+    "keywords": [
+        "package",
+        "chatter"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Henry Truong",
+            "email": "thanhhaibkit@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.3",
+        "laravel/framework": "^8.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Henry\\Chatter\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+          "providers": [
+            "Henry\\Chatter\\Providers\\ChatterServiceProvider"
+          ]
+        }
+      }
+}
