@@ -1,3 +1,18 @@
+# Middleware
+
+> [Laravel middle document](https://laravel.com/docs/8.x/middleware#introduction)
+
+
+### Example: create middleware to check access right of user by their role and permission
+
+Create middleware via artisan console
+
+```sh
+php artisan make:middleware
+```
+
+```php
+// File: \Http\Middleware\RoleMiddleware.php
 <?php
 
 namespace Henry\Permission\Http\Middleware;
@@ -29,3 +44,14 @@ class RoleMiddleware
         return $next($request);
     }
 }
+```
+
+Use middle at router
+
+```php
+Route::group(['middleware' => 'role:admin'], function() {
+    Route::get('/admin', function() {
+        return 'Welcome Admin';
+    });
+});
+```

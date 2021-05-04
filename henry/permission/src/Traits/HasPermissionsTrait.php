@@ -74,9 +74,6 @@ trait HasPermissionsTrait
         return false;
     }
 
-    /***********************
-     **** Relationships ****
-     ***********************/
     public function roles()
     {
         return $this->belongsToMany(Role::class, 'users_roles');
