@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Chartjs\DemoChartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,6 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/admin/accounts', [AccountController::class, 'index'])->name('admin.account.index');
+
+Route::get('/chartjs/demo', [DemoChartController::class, 'index']);
 
 /*
 Route::get('/{any?}', function () {
