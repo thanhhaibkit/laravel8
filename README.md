@@ -23,3 +23,6 @@ Practice guide:
 - [Use Vue as front-end](.\notes\Vue.md)
 - [Apply Repository pattern](.\notes\Repository.md)
 - [Create Console Command (Batch Job)](.\notes\Command.md)
+- [Module/Package](.\notes\Package.md)
+- [Trait](.\notes\Trait.md)
+- [Middleware](.\notes\Middleware.md)
