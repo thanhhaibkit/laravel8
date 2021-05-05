@@ -30,6 +30,7 @@ class ServiceProvider extends BaseServiceProvider
 
     protected function publishResources()
     {
+        // Publish the seed data
         $this->publishes([
             __DIR__ . '/../database/seeds/PermisionSeeder.php' => database_path('seeds/PermisionSeeder.php'),
         ], 'permission-seeds');
