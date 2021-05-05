@@ -45,7 +45,7 @@ class CreateSchema extends Command
             // Check to make sure this schema is not existed
             $checkSchema = DB::table('information_schema.schemata')->where('schema_name', $schema);
             if ($checkSchema->count() > 0) {
-                Log::error(printf("[schema:create] The schema %s is existed!", $schema));
+                Log::error("[schema:create] The schema {$schema} is existed!", []);
                 return false;
             }
 
@@ -71,7 +71,7 @@ class CreateSchema extends Command
 
             return true;
         } catch (\Exception $ex) {
-            Log::error($ex->getMessage());
+            Log::error($ex->getMessage(), []);
             return false;
         }
 
